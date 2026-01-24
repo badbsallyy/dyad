@@ -8,7 +8,8 @@ appRoutes.get("/", async (req, res) => {
     // TODO: Import and use the actual app handlers from IPC
     res.json({ apps: [] });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    const message = error instanceof Error ? error.message : "Unknown error";
+    res.status(500).json({ error: message });
   }
 });
 
@@ -19,7 +20,8 @@ appRoutes.get("/:appId", async (req, res) => {
     // TODO: Import and use the actual app handlers from IPC
     res.json({ appId });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    const message = error instanceof Error ? error.message : "Unknown error";
+    res.status(500).json({ error: message });
   }
 });
 
@@ -30,7 +32,8 @@ appRoutes.post("/", async (req, res) => {
     // TODO: Import and use the actual app handlers from IPC
     res.json({ success: true, appId: "new-app-id" });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    const message = error instanceof Error ? error.message : "Unknown error";
+    res.status(500).json({ error: message });
   }
 });
 
@@ -41,6 +44,7 @@ appRoutes.delete("/:appId", async (req, res) => {
     // TODO: Import and use the actual app handlers from IPC
     res.json({ success: true });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    const message = error instanceof Error ? error.message : "Unknown error";
+    res.status(500).json({ error: message });
   }
 });

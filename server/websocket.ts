@@ -26,8 +26,9 @@ export function setupWebSocketHandlers(wss: WebSocketServer) {
             ws.send(JSON.stringify({ type: "error", error: "Unknown message type" }));
         }
       } catch (error) {
+        const message = error instanceof Error ? error.message : "Unknown error";
         console.error("WebSocket message error:", error);
-        ws.send(JSON.stringify({ type: "error", error: error.message }));
+        ws.send(JSON.stringify({ type: "error", error: message }));
       }
     });
 

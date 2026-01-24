@@ -8,7 +8,8 @@ chatRoutes.get("/", async (req, res) => {
     // TODO: Import and use the actual chat handlers from IPC
     res.json({ chats: [] });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    const message = error instanceof Error ? error.message : "Unknown error";
+    res.status(500).json({ error: message });
   }
 });
 
@@ -19,7 +20,8 @@ chatRoutes.get("/:chatId", async (req, res) => {
     // TODO: Import and use the actual chat handlers from IPC
     res.json({ chatId });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    const message = error instanceof Error ? error.message : "Unknown error";
+    res.status(500).json({ error: message });
   }
 });
 
@@ -30,7 +32,8 @@ chatRoutes.post("/", async (req, res) => {
     // TODO: Import and use the actual chat handlers from IPC
     res.json({ success: true, chatId: "new-chat-id" });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    const message = error instanceof Error ? error.message : "Unknown error";
+    res.status(500).json({ error: message });
   }
 });
 

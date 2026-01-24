@@ -9,7 +9,8 @@ settingsRoutes.get("/", async (req, res) => {
     const settings = readSettings();
     res.json(settings);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    const message = error instanceof Error ? error.message : "Unknown error";
+    res.status(500).json({ error: message });
   }
 });
 
@@ -21,6 +22,7 @@ settingsRoutes.patch("/", async (req, res) => {
     const settings = readSettings();
     res.json(settings);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    const message = error instanceof Error ? error.message : "Unknown error";
+    res.status(500).json({ error: message });
   }
 });

@@ -22,17 +22,12 @@ app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 // Initialize database
 initializeDatabase();
 
-// Register API routes
+// Register API routes BEFORE static files
 registerApiRoutes(app);
 
 // Serve static files from the dist directory (built frontend)
 const distPath = path.join(__dirname, "../dist");
 app.use(express.static(distPath));
-
-// Fallback to index.html for SPA routing
-app.get("*", (req, res) => {
-  res.sendFile(path.join(distPath, "index.html"));
-});
 
 // Create HTTP server
 const server = createServer(app);
@@ -44,4 +39,6 @@ setupWebSocketHandlers(wss);
 server.listen(PORT, () => {
   console.log(`Dyad Web Server running on http://localhost:${PORT}`);
   console.log(`WebSocket server available at ws://localhost:${PORT}/ws`);
+  console.log(`Serving static files from: ${distPath}`);
 });
+
