@@ -8,6 +8,7 @@ lerna-debug.log*
 
 # dist
 dist/
+dist-server/
 
 # playwright
 playwright-report/
