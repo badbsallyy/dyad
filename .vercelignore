@@ -1,0 +1,71 @@
+# Dependencies
+node_modules
+
+# Testing
+e2e-tests
+test-results
+playwright-report
+coverage
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+vitest.config.ts
+
+# Build artifacts (except dist)
+out
+.vite
+.webpack
+dist-server
+
+# Development files
+.env.local
+.env.test
+*.log
+
+# Electron specific
+src/main
+src/preload
+forge.config.ts
+forge.env.d.ts
+vite.main.config.mts
+vite.preload.config.mts
+vite.renderer.config.mts
+vite.worker.config.mts
+index.html
+
+# Makers
+makers
+
+# Documentation (keep only deployment docs)
+docs
+
+# Docker
+Dockerfile*
+docker-compose*.yml
+demo-web.sh
+
+# IDE
+.idea
+.vscode
+
+# Git
+.git
+.gitignore
+
+# SQLite databases
+*.db
+*.db-*
+userData
+
+# Scripts
+scripts/extract-codebase.ts
+scripts/verify-release-assets.js
+
+# Workers
+worker
+workers
+
+# Temp files
+tmp
+.DS_Store
