@@ -166,7 +166,26 @@ server {
 }
 ```
 
-### Vercel (Frontend only)
+### Vercel (with GitHub Actions - Recommended)
+
+**Note**: For the full step-by-step guide, see [VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md)
+
+Vercel deployment is now fully automated with GitHub Actions. This setup provides:
+- Automatic production deployments on push to `main`
+- Preview deployments for Pull Requests
+- Seamless CI/CD pipeline
+
+Quick setup:
+1. Create a Vercel project connected to your repository
+2. Add three secrets to your GitHub repository:
+   - `VERCEL_TOKEN` - Your Vercel API token
+   - `VERCEL_ORG_ID` - Your Vercel organization ID
+   - `VERCEL_PROJECT_ID` - Your Vercel project ID
+3. Push to `main` or create a PR to trigger deployment
+
+For detailed instructions, environment variables, and troubleshooting, see [VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md).
+
+### Vercel (Manual - Frontend only)
 
 Note: Vercel works best for frontend-only deployments. You'll need a separate backend.
 

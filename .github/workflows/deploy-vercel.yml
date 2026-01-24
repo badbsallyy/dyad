@@ -33,7 +33,7 @@ jobs:
         run: npm ci
 
       - name: Build client
-        run: npm run web:client:build
+        run: npm run web:build
 
       - name: Install Vercel CLI
         run: npm install --global vercel@latest

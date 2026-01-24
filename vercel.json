@@ -12,6 +12,10 @@
       "dest": "/api/index.ts"
     },
     {
+      "src": "/",
+      "dest": "/dist/index-web.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/dist/$1"
     }
@@ -19,7 +23,7 @@
   "outputDirectory": "dist",
   "framework": null,
   "installCommand": "npm install",
-  "buildCommand": "npm run web:client:build",
+  "buildCommand": "npm run web:build",
   "env": {
     "NODE_ENV": "production"
   }
