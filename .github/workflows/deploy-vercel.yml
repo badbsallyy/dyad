@@ -32,9 +32,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build client
-        run: npm run web:build
-
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
