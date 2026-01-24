@@ -12,12 +12,16 @@
       "dest": "/api/index.ts"
     },
     {
+      "src": "/assets/(.*)",
+      "dest": "/dist/assets/$1"
+    },
+    {
       "src": "/",
-      "dest": "/dist/index-web.html"
+      "dest": "/dist/index.html"
     },
     {
       "src": "/(.*)",
-      "dest": "/dist/$1"
+      "dest": "/dist/index.html"
     }
   ],
   "outputDirectory": "dist",
