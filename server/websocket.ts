@@ -43,11 +43,13 @@ export function setupWebSocketHandlers(wss: WebSocketServer) {
 }
 
 async function handleChatStream(ws: WebSocket, payload: any) {
-  // TODO: Implement chat streaming logic
+  // TODO: Implement actual chat streaming logic
   // This should call the chat stream handlers and send chunks back via WebSocket
+  console.warn("Chat streaming not yet implemented - sending placeholder response");
+  
   ws.send(JSON.stringify({ 
     type: "chat:response:chunk", 
-    payload: { chatId: payload.chatId, chunk: "Sample response" }
+    payload: { chatId: payload.chatId, chunk: "TODO: Implement actual chat response" }
   }));
   
   ws.send(JSON.stringify({ 
@@ -57,7 +59,9 @@ async function handleChatStream(ws: WebSocket, payload: any) {
 }
 
 async function handleChatCancel(ws: WebSocket, payload: any) {
-  // TODO: Implement chat cancellation logic
+  // TODO: Implement actual chat cancellation logic
+  console.warn("Chat cancellation not yet implemented");
+  
   ws.send(JSON.stringify({ 
     type: "chat:cancelled", 
     payload: { chatId: payload.chatId }

@@ -3,8 +3,11 @@
  * This client provides the same interface as the Electron IPC client but uses web APIs
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api";
-const WS_URL = import.meta.env.VITE_WS_URL || "ws://localhost:3000/ws";
+// Use environment variables with fallbacks for different environments
+const API_BASE_URL = import.meta.env.VITE_API_URL || 
+  (import.meta.env.PROD ? window.location.origin + "/api" : "http://localhost:3000/api");
+const WS_URL = import.meta.env.VITE_WS_URL || 
+  (import.meta.env.PROD ? `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}/ws` : "ws://localhost:3000/ws");
 
 type WebSocketListener = (data: any) => void;
 
@@ -74,8 +77,10 @@ class WebApiClient {
     if (this.ws && this.ws.readyState === WebSocket.OPEN) {
       this.ws.send(JSON.stringify({ type, payload }));
     } else {
-      console.error("WebSocket not connected");
-      throw new Error("WebSocket not connected");
+      const status = this.ws ? ['CONNECTING', 'OPEN', 'CLOSING', 'CLOSED'][this.ws.readyState] : 'NOT_INITIALIZED';
+      const error = `WebSocket not ready (status: ${status}). Please wait for connection or try again.`;
+      console.error(error);
+      throw new Error(error);
     }
   }
 
