@@ -18,10 +18,12 @@ This will start:
 
 ## Production Build
 
-### Build Both Client and Server
+### Build Client Only
+
+The server runs directly from TypeScript using `tsx`:
 
 ```bash
-npm run web:build
+npm run web:client:build
 ```
 
 ### Run Production Server
@@ -31,6 +33,8 @@ npm run web:start
 ```
 
 The server will be available at http://localhost:3000
+
+**Note**: The web server uses `tsx` to run TypeScript directly, eliminating build complexity while maintaining good performance.
 
 ## Docker Deployment
 

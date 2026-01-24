@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { readSettings, writeSettings } from "../../src/main/settings";
+import { readSettings, writeSettings } from "../settings";
 
 export const settingsRoutes = Router();
 

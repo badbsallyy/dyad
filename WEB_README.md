@@ -2,6 +2,54 @@
 
 This is the web version of Dyad, converted from the Electron desktop application to run in the browser.
 
+## Architecture Overview
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                         Browser                              │
+│  ┌───────────────────────────────────────────────────────┐  │
+│  │         React Frontend (Vite + TanStack)              │  │
+│  │  - UI Components (Same as Desktop)                    │  │
+│  │  - TanStack Router for Navigation                     │  │
+│  │  - WebApiClient (HTTP/WebSocket)                      │  │
+│  └────────────────┬────────────────────────────────────┬─┘  │
+│                   │ HTTP/REST                           │    │
+│                   │                        WebSocket    │    │
+└───────────────────┼────────────────────────────────────┼────┘
+                    │                                     │
+                    ▼                                     ▼
+┌─────────────────────────────────────────────────────────────┐
+│              Node.js Backend Server (Express)                │
+│  ┌─────────────────────────────────────────────────────┐    │
+│  │  REST API (/api/*)        WebSocket Server (/ws)    │    │
+│  │  - Apps Management        - Chat Streaming          │    │
+│  │  - Chat History           - Real-time Updates       │    │
+│  │  - Settings              - Agent Communication      │    │
+│  │  - File Operations                                  │    │
+│  └─────────────────┬───────────────────────────────────┘    │
+│                    │                                          │
+│                    ▼                                          │
+│  ┌─────────────────────────────────────────────────────┐    │
+│  │    Database (SQLite) + File System                  │    │
+│  │    - User Data & Settings                           │    │
+│  │    - App Projects                                   │    │
+│  │    - Chat History                                   │    │
+│  └─────────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## Key Differences from Desktop Version
+
+| Feature | Desktop (Electron) | Web Version |
+|---------|-------------------|-------------|
+| **Architecture** | Main + Renderer Process | Client + Server |
+| **Communication** | IPC (Inter-Process) | HTTP REST + WebSocket |
+| **Database** | Direct SQLite Access | Server-side SQLite |
+| **File System** | Direct Access | Server-side API |
+| **Window Controls** | Native Electron | Browser Standard |
+| **Updates** | Auto-updater | Deploy to Server |
+| **Deep Links** | Custom Protocol | URL Routing |
+
 ## Architecture
 
 The web version consists of two main components:

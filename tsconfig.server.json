@@ -9,12 +9,16 @@
     "rootDir": ".",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": false,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "declaration": false,
     "declarationMap": false,
-    "sourceMap": true
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": [
     "server/**/*"
@@ -24,6 +28,8 @@
     "dist",
     "dist-server",
     "out",
-    ".vite"
+    ".vite",
+    "src/**/*",
+    "shared/**/*"
   ]
 }

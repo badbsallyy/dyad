@@ -14,15 +14,16 @@ if [ ! -d "dist" ]; then
     echo ""
 fi
 
-# Build server
-echo "Building server..."
-npm run web:server:build
-echo ""
-
 echo "Starting Dyad Web Server..."
 echo ""
 echo "Server will be available at: http://localhost:3000"
 echo "WebSocket available at: ws://localhost:3000/ws"
+echo ""
+echo "API Endpoints:"
+echo "  GET http://localhost:3000/api/health"
+echo "  GET http://localhost:3000/api/settings"
+echo "  GET http://localhost:3000/api/apps"
+echo "  GET http://localhost:3000/api/chats"
 echo ""
 echo "Press Ctrl+C to stop the server"
 echo ""
